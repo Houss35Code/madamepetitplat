@@ -1,0 +1,36 @@
+// ============================================================
+//  THEMES / _colors.scss
+//  Madame Petit Plat — Charte chromatique (CDC §10.2)
+//  Expose les variables SASS en CSS custom properties
+//  pour les rendre utilisables en JS si besoin.
+// ============================================================
+
+@use '../abstracts/variables' as *;
+
+:root {
+    // Rouges
+    --color-red:          #{$red};
+    --color-red-dark:     #{$red-dark};
+    --color-red-light:    #{$red-light};
+    --color-red-muted:    #{$red-muted};
+
+    // Neutres chauds
+    --color-cream:        #{$cream};
+    --color-warm-white:   #{$warm-white};
+    --color-charcoal:     #{$charcoal};
+
+    // Bruns
+    --color-brown:        #{$brown};
+    --color-brown-mid:    #{$brown-mid};
+    --color-brown-light:  #{$brown-light};
+
+    // Accents
+    --color-gold:         #{$gold};
+    --color-sage:         #{$sage};
+    --color-sage-light:   #{$sage-light};
+
+    // UI
+    --color-border:       #{$border};
+    --color-text:         #{$text};
+    --color-text-light:   #{$text-light};
+}

@@ -1,0 +1,55 @@
+// ============================================================
+//  main.scss — Point d'entrée unique
+//  Madame Petit Plat — Architecture Sass 7-1
+//  Compilé par Laravel Vite → public/build/assets/main.css
+// ============================================================
+//
+//  Ordre d'import :
+//  1. abstracts  — variables, mixins, functions (pas de CSS généré)
+//  2. themes     — custom properties CSS
+//  3. base       — reset, typographie
+//  4. layout     — nav, footer
+//  5. components — buttons, cards, forms, badges
+//  6. pages      — styles spécifiques par page
+//  7. vendors    — librairies tierces (lightbox…)
+// ============================================================
+
+
+// 1. ABSTRACTS ───────────────────────────────────────────────
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins'    as *;
+@use 'abstracts/functions' as *;
+
+
+// 2. THEMES ──────────────────────────────────────────────────
+@use 'themes/colors';
+
+
+// 3. BASE ────────────────────────────────────────────────────
+@use 'base/reset';
+@use 'base/typography';
+
+
+// 4. LAYOUT ──────────────────────────────────────────────────
+@use 'layouts/nav';
+@use 'layouts/footer';
+@use 'layouts/admin';
+
+
+// 5. COMPONENTS ──────────────────────────────────────────────
+@use 'components/buttons';
+@use 'components/badges';
+@use 'components/cards';
+@use 'components/forms';
+@use 'components/modal';
+
+
+// 6. PAGES ───────────────────────────────────────────────────
+@use 'pages/home';
+@use 'pages/pedagogie';
+@use 'pages/menu-detail';
+@use 'pages/auth';
+
+
+// 7. VENDORS ─────────────────────────────────────────────────
+// @use 'vendors/lightbox';   ← à activer quand la lib est choisie

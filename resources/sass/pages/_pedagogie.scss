@@ -1,0 +1,502 @@
+// ============================================================
+//  _pedagogie.scss
+//  Page « Donne-moi des ailes » — espace pédagogique d'Isabel
+//  Architecture Sass 7-1 · dossier pages/
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins'    as *;
+@use 'sass:color';
+
+
+// ────────────────────────────────────────────────────────────
+//  1. HERO PÉDAGOGIQUE
+// ────────────────────────────────────────────────────────────
+
+.peda-hero {
+    position:    relative;
+    background:  linear-gradient(135deg, $brown 0%, #1a0808 100%);
+    padding: calc(70px + 4rem) $section-padding-x 5rem;
+    overflow:    hidden;
+    color:       #fff;
+
+    &__deco {
+        position:       absolute;
+        right:          4%;
+        top:            50%;
+        transform:      translateY(-50%);
+        font-size:      clamp(10rem, 22vw, 20rem);
+        color:          rgba($red, 0.06);
+        line-height:    1;
+        pointer-events: none;
+        user-select:    none;
+    }
+
+    &__inner {
+        position:  relative;
+        max-width: 680px;
+    }
+
+    &__back {
+        display:         inline-block;
+        margin-bottom:   1.6rem;
+        font-size:       .8rem;
+        font-weight:     500;
+        letter-spacing:  .06em;
+        text-transform:  uppercase;
+        color:           rgba(#fff, .5);
+        text-decoration: none;
+        transition:      color .2s;
+
+        &:hover { color: $red-muted; }
+    }
+
+    .section-label { color: $red-muted; }
+
+    &__title {
+        font-family:   'Cormorant Garamond', serif;
+        font-size:     clamp(2.8rem, 6vw, 5rem);
+        font-weight:   700;
+        font-style:    italic;
+        color:         #fff;
+        line-height:   1.08;
+        margin-bottom: .9rem;
+
+        em {
+            color:      $red-muted;
+            font-style: normal;
+        }
+    }
+
+    .divider { margin-bottom: 1.4rem; }
+
+    &__intro {
+        font-size:   1rem;
+        line-height: 1.8;
+        color:       rgba(#fff, .65);
+        max-width:   560px;
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  2. FILTRES PAR CATÉGORIE
+// ────────────────────────────────────────────────────────────
+
+.peda-filtres {
+    background:    $cream;
+    border-bottom: 1px solid $border;
+    padding:       1.2rem $section-padding-x;
+
+    &__inner {
+        display:     flex;
+        flex-wrap:   wrap;
+        gap:         .6rem;
+        align-items: center;
+    }
+}
+
+.peda-filtre {
+    background:     #fff;
+    border:         1.5px solid $border;
+    border-radius:  2rem;
+    padding:        .4rem 1.1rem;
+    font-family:    'DM Sans', sans-serif;
+    font-size:      .8rem;
+    font-weight:    500;
+    letter-spacing: .05em;
+    color:          $text-light;
+    cursor:         pointer;
+    transition:     background .2s, border-color .2s, color .2s;
+
+    &:hover {
+        border-color: $red-muted;
+        color:        $red-dark;
+    }
+
+    &--actif {
+        background:   $red;
+        border-color: $red;
+        color:        #fff;
+
+        &:hover {
+            background:   $red-dark;
+            border-color: $red-dark;
+            color:        #fff;
+        }
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  3. GRILLE DES FICHES
+// ────────────────────────────────────────────────────────────
+
+.peda-fiches {
+    background: $warm-white;
+    padding:    5rem $section-padding-x;
+
+    &__grille {
+        display:               grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap:                   1.6rem;
+
+        @include respond-to('lg') {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include respond-to('sm') {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  4. CARTE FICHE PÉDAGOGIQUE
+// ────────────────────────────────────────────────────────────
+
+.peda-fiche {
+    background:     $cream;
+    border:         1px solid $border;
+    border-radius:  1.2rem;
+    padding:        1.8rem;
+    display:        flex;
+    flex-direction: column;
+    gap:            .75rem;
+    transition:     transform .25s, box-shadow .25s;
+
+    &:hover {
+        transform:  translateY(-5px);
+        box-shadow: 0 16px 42px rgba($red, .08);
+    }
+
+    &__entete {
+        display:         flex;
+        align-items:     center;
+        justify-content: space-between;
+        flex-wrap:       wrap;
+        gap:             .4rem;
+    }
+
+    &__date {
+        font-size:  .75rem;
+        color:      $text-light;
+        font-style: italic;
+    }
+
+    &__categorie {
+        display:        inline-block;
+        font-size:      .72rem;
+        font-weight:    700;
+        letter-spacing: .07em;
+        text-transform: uppercase;
+        padding:        .25rem .75rem;
+        border-radius:  2rem;
+
+        &--methode   { background: $red-light;   color: $red-dark; }
+        &--projet    { background: $sage-light;   color: color.adjust($sage, $lightness: -10%); }
+        &--reflexion { background: #f0e8d0;       color: color.adjust($gold, $lightness: -12%); }
+        &--autre     { background: #e8eaf0;       color: #4a5070; }
+    }
+
+    &__titre {
+        font-family:  'Cormorant Garamond', serif;
+        font-size:    1.2rem;
+        font-weight:  600;
+        color:        $brown;
+        line-height:  1.3;
+    }
+
+    &__resume {
+        font-size:   .88rem;
+        color:       $text-light;
+        line-height: 1.65;
+        flex-grow:   1;
+    }
+
+    &__corps {
+        display:  none;
+        overflow: hidden;
+
+        p {
+            font-size:     .88rem;
+            color:         $text;
+            line-height:   1.7;
+            margin-bottom: .9rem;
+        }
+
+        &--visible { display: block; }
+    }
+
+    &__liste {
+        list-style:     none;
+        padding:        0;
+        margin:         0;
+        display:        flex;
+        flex-direction: column;
+        gap:            .4rem;
+
+        li {
+            font-size:    .84rem;
+            color:        $text-light;
+            padding-left: 1.1em;
+            position:     relative;
+
+            &::before {
+                content:   '✦';
+                position:  absolute;
+                left:      0;
+                font-size: .65em;
+                color:     $red;
+                top:       .15em;
+            }
+        }
+    }
+
+    &__toggle {
+        margin-top:     .4rem;
+        align-self:     flex-start;
+        background:     transparent;
+        border:         1.5px solid $border;
+        border-radius:  2rem;
+        padding:        .35rem .9rem;
+        font-family:    'DM Sans', sans-serif;
+        font-size:      .78rem;
+        font-weight:    500;
+        color:          $brown;
+        cursor:         pointer;
+        transition:     border-color .2s, color .2s, background .2s;
+
+        span { margin-left: .3rem; }
+
+        &:hover {
+            background:   $red-light;
+            border-color: $red-muted;
+            color:        $red-dark;
+        }
+
+        &[aria-expanded='true'] {
+            background:   $red;
+            border-color: $red;
+            color:        #fff;
+        }
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  5. BANDEAU RETOUR SITE TRAITEUR
+// ────────────────────────────────────────────────────────────
+
+.peda-retour {
+    background: linear-gradient(135deg, $brown 0%, #2a0a0a 100%);
+    padding:    5rem $section-padding-x;
+    text-align: center;
+    position:   relative;
+    overflow:   hidden;
+
+    &::after {
+        content:    '';
+        position:   absolute;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        height:     3px;
+        background: linear-gradient(to right, transparent, $gold, transparent);
+    }
+
+    &__inner {
+        max-width: 600px;
+        margin:    0 auto;
+    }
+
+    &__label {
+        display:        block;
+        font-size:      .72rem;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color:          $red-muted;
+        font-weight:    700;
+        margin-bottom:  .8rem;
+    }
+
+    &__titre {
+        font-family:   'Cormorant Garamond', serif;
+        font-size:     clamp(1.7rem, 3.2vw, 2.4rem);
+        font-weight:   700;
+        color:         #fff;
+        line-height:   1.25;
+        margin-bottom: 2rem;
+
+        em {
+            font-style:  italic;
+            color:       $red-muted;
+            font-weight: 400;
+        }
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  6. RESPONSIVE
+// ────────────────────────────────────────────────────────────
+
+@include respond-to('md') {
+    .peda-hero       { padding: 6rem 6% 4rem; }
+    .peda-filtres    { padding: 1rem 6%; }
+    .peda-fiches     { padding: 3.5rem 6%; }
+    .peda-retour     { padding: 4rem 6%; }
+}
+
+@include respond-to('sm') {
+    .peda-hero {
+        padding: 5rem 5% 3.5rem;
+        &__title { font-size: 2.4rem; }
+    }
+
+    .peda-filtres__inner { gap: .4rem; }
+
+    .peda-filtre {
+        font-size: .75rem;
+        padding:   .35rem .85rem;
+    }
+
+    .peda-fiches { padding: 3rem 5%; }
+    .peda-retour { padding: 3.5rem 5%; }
+}
+
+// ── SECTION PADLETS DIGIPAD ─────────────────────────────────
+
+.peda-padlet {
+    display:        flex;
+    flex-direction: column;
+    gap:            $space-xs;
+    padding:        $space-lg;
+    background:     $cream;
+    border:         1px solid $border;
+    border-radius:  $radius-xl;
+    text-decoration: none;
+    transition:     $transition-base;
+    text-align:     left;
+
+    &:hover {
+        border-color: $red-muted;
+        box-shadow:   $shadow-md;
+        transform:    translateY(-2px);
+    }
+
+    &__titre {
+        font-family: $font-serif;
+        font-size:   $fs-lg;
+        font-weight: $fw-bold;
+        color:       $brown;
+        margin:      0;
+    }
+
+    &__desc {
+        font-size:  $fs-sm;
+        color:      $text-light;
+        flex-grow:  1;
+        margin:     0;
+    }
+
+    &__cta {
+        margin-top:  auto;
+        padding-top: $space-sm;
+        font-size:   $fs-sm;
+        font-weight: $fw-bold;
+        color:       $red;
+        border-top:  1px solid $border;
+    }
+}
+
+// ────────────────────────────────────────────────────────────
+//  7. PAGE DÉTAIL FICHE
+// ────────────────────────────────────────────────────────────
+
+.fiche-detail {
+    background: $warm-white;
+    min-height: 80vh;
+    padding:    5rem $section-padding-x;
+
+    &__nav {
+        max-width:     780px;
+        margin:        0 auto 2rem;
+    }
+
+    &__retour {
+        font-size:       .82rem;
+        font-weight:     500;
+        letter-spacing:  .05em;
+        color:           $text-light;
+        text-decoration: none;
+        transition:      color .2s;
+
+        &:hover { color: $red; }
+    }
+
+    &__article {
+        max-width:     780px;
+        margin:        0 auto;
+        background:    $cream;
+        border:        1px solid $border;
+        border-radius: 1.2rem;
+        padding:       3rem;
+        box-shadow:    0 4px 24px rgba($brown, .06);
+    }
+
+    &__entete {
+        display:     flex;
+        align-items: center;
+        gap:         1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__titre {
+        font-family:   'Cormorant Garamond', serif;
+        font-size:     clamp(1.8rem, 4vw, 2.6rem);
+        font-weight:   700;
+        color:         $brown;
+        line-height:   1.2;
+        margin-bottom: 1.2rem;
+    }
+
+    &__resume {
+        font-size:     1rem;
+        color:         $text-light;
+        font-style:    italic;
+        line-height:   1.75;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid $border;
+    }
+
+    &__meta {
+        list-style: none;
+        padding:    0;
+        display:    flex;
+        gap:        2rem;
+        margin-bottom: 2rem;
+        font-size:  .88rem;
+        color:      $text-light;
+
+        li strong { color: $brown; }
+    }
+
+    &__contenu {
+        font-size:   1rem;
+        line-height: 1.85;
+        color:       $text;
+    }
+
+    @include respond-to('md') {
+        padding: 3rem 6%;
+    }
+
+    @include respond-to('sm') {
+        padding: 2rem 5%;
+
+        &__article { padding: 1.8rem 1.4rem; }
+    }
+}

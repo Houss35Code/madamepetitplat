@@ -1,0 +1,59 @@
+// ============================================================
+//  BASE / _reset.scss — Mobile First
+// ============================================================
+
+@use '../abstracts/variables' as *;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: $font-sans;
+    font-weight: $fw-light;
+    background: $warm-white;
+    color: $text;
+    line-height: $lh-normal;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select { font: inherit; }
+ul, ol { list-style: none; }
+a { text-decoration: none; color: inherit; }
+p { overflow-wrap: break-word; }
+h1, h2, h3, h4, h5, h6 { font-weight: $fw-regular; line-height: $lh-tight; }
+button { cursor: pointer; background: none; border: none; }
+
+// Skip link accessibilité RGAA 4.1
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.5rem 1rem;
+    background: $red;
+    color: #fff;
+    border-radius: 0 0 $radius-sm $radius-sm;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    transition: top 0.2s;
+
+    &:focus { top: 0; }
+}

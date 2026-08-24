@@ -1,0 +1,38 @@
+// ============================================================
+//  ABSTRACTS / _functions.scss
+//  Madame Petit Plat — Fonctions utilitaires
+// ============================================================
+
+@use 'variables' as *;
+@use 'sass:map';
+
+
+// ── BREAKPOINTS ─────────────────────────────────────────────
+
+/// Retourne la valeur px d'un breakpoint nommé
+/// Usage : width: bp(md)  →  960px
+@function bp($name) {
+    @if map.has-key($breakpoints, $name) {
+        @return map.get($breakpoints, $name);
+    }
+    @warn "Breakpoint `#{$name}` inconnu.";
+    @return null;
+}
+
+
+// ── COULEURS ────────────────────────────────────────────────
+
+/// Ajoute de l'opacité à une couleur SASS
+/// Usage : color: alpha($red, 0.15)
+@function alpha($color, $opacity) {
+    @return rgba($color, $opacity);
+}
+
+
+// ── TYPOGRAPHIE ─────────────────────────────────────────────
+
+/// Convertit px en rem (base 16px)
+/// Usage : font-size: rem(14)  →  0.875rem
+@function rem($px) {
+    @return calc($px / 16) * 1rem;
+}

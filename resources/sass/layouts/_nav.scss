@@ -1,0 +1,202 @@
+// ============================================================
+//  LAYOUT / _nav.scss
+//  Madame Petit Plat — Navigation — Mobile First
+// ============================================================
+
+@use '../abstracts/variables' as *;
+
+// ── NAV CONTAINER ───────────────────────────────────────────
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $nav-height;
+    padding: 0 5%;
+    background: rgba($warm-white, 0.97);
+    box-shadow: 0 2px 20px rgba($red, 0.08);
+    z-index: $z-nav;
+    transition: background $transition-base, box-shadow $transition-base;
+}
+
+// ── LOGO ────────────────────────────────────────────────────
+
+.nav-logo {
+    font-family: $font-serif;
+    font-size: $fs-lg;
+    font-weight: $fw-bold;
+    color: $brown;
+    letter-spacing: -0.02em;
+    transition: color $transition-fast;
+
+    span { color: $red; }
+
+    &:hover { color: $red; }
+}
+
+// ── LIENS ───────────────────────────────────────────────────
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-sm;
+    position: fixed;
+    top: $nav-height;
+    right: 0;
+    width: 280px;
+    height: calc(100vh - #{$nav-height});
+    background: $warm-white;
+    padding: $space-lg $space-md;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform $transition-slow;
+    overflow-y: auto;
+
+    a {
+        font-family: $font-sans;
+        font-size: $fs-base;
+        font-weight: $fw-medium;
+        color: $text-light;
+        transition: color $transition-fast;
+
+        &:hover { color: $red; }
+    }
+
+    &.open { transform: translateX(0); }
+}
+
+// Lien pédagogique
+.nav-ailes {
+    color: $gold !important;
+    font-style: italic;
+}
+
+// Adimin
+.nav-admin {
+    font-size:       .78rem;
+    font-weight:     500;
+    color:           $text-light;
+    text-decoration: none;
+    padding:         .3rem .85rem;
+    border:          1.5px solid $border;
+    border-radius:   $radius-pill;
+    transition:      border-color .2s, color .2s;
+
+    &:hover {
+        border-color: $red-muted;
+        color:        $red-dark;
+    }
+}
+
+// Bouton devis
+.nav-cta {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background: $red;
+    color: #fff !important;
+    border-radius: $radius-pill;
+    font-family: $font-sans;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    letter-spacing: 0.06em;
+    margin-top: $space-sm;
+    transition: background $transition-fast, transform $transition-fast;
+
+    &:hover { background: $red-dark; transform: translateY(-1px); }
+}
+
+// ── HAMBURGER ───────────────────────────────────────────────
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+    cursor: pointer;
+
+    span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: $brown;
+        border-radius: 2px;
+        transition: $transition-base;
+    }
+
+    &[aria-expanded="true"] {
+        span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        span:nth-child(2) { opacity: 0; }
+        span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+}
+
+// ── MEDIA QUERIES ───────────────────────────────────────────
+
+@media (min-width: 960px) {
+
+    #navbar {
+        padding: 0 $section-padding-x;
+        background: transparent;
+        box-shadow: none;
+
+        &.scrolled {
+            background: rgba($warm-white, 0.97);
+            box-shadow: 0 2px 20px rgba($red, 0.08);
+            backdrop-filter: blur(8px);
+        }
+    }
+
+    .nav-links {
+        flex-direction: row;
+        align-items: center;
+        gap: $space-md;
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        transform: none;
+        overflow-y: visible;
+
+        a {
+            font-size: $fs-sm;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: $red;
+                border-radius: 1px;
+                transition: width $transition-base;
+            }
+
+            &:hover::after { width: 100%; }
+        }
+    }
+
+    .nav-ailes::after { background: $gold !important; }
+
+    .nav-cta {
+        font-size: $fs-xs;
+        padding: 0.45rem 1.2rem;
+        margin-top: 0;
+    }
+
+    .hamburger { display: none; }
+
+    #navbar.navbar--dark:not(.scrolled) {
+    .nav-logo { color: #fff; span { color: $red-muted; } }
+    .nav-links a { color: rgba(#fff, .75); }
+    .hamburger span { background: #fff; }
+}
+}

@@ -1,0 +1,95 @@
+// ============================================================
+//  COMPONENTS / _forms.scss — Mobile First
+// ============================================================
+
+@use '../abstracts/variables' as *;
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $text-light;
+    letter-spacing: 0.03em;
+
+    span { color: $red; }
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 0.75rem 1rem;
+        border: 1.5px solid $border;
+        border-radius: $radius-sm;
+        font-family: $font-sans;
+        font-size: $fs-base;
+        color: $text;
+        background: #f9f6f2;
+        transition: border-color $transition-fast, box-shadow $transition-fast;
+        width: 100%;
+
+        &::placeholder { color: $brown-light; }
+
+        &:focus {
+            outline: none;
+            border-color: $red-muted;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba($red, 0.08);
+        }
+    }
+
+    textarea {
+        min-height: 130px;
+        resize: vertical;
+    }
+
+    select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237a5050' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+    }
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-sm;
+}
+
+.form-submit {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: $space-xs;
+    font-size: $fs-base;
+}
+
+.form-success {
+    padding: $space-sm;
+    background: $sage-light;
+    color: $sage;
+    border-radius: $radius-sm;
+    font-weight: $fw-medium;
+    margin-bottom: $space-sm;
+}
+
+.form-errors {
+    padding: $space-sm;
+    background: $red-light;
+    color: $red-dark;
+    border-radius: $radius-sm;
+    margin-bottom: $space-sm;
+
+    li { font-size: $fs-sm; }
+}
+
+// ── MEDIA QUERIES ───────────────────────────────────────────
+
+@media (min-width: 640px) {
+    .form-row { grid-template-columns: 1fr 1fr; }
+}

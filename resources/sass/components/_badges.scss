@@ -1,0 +1,35 @@
+// ============================================================
+//  COMPONENTS / _badges.scss — Mobile First
+// ============================================================
+
+@use '../abstracts/variables' as *;
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1rem;
+    background: $cream;
+    border: 1px solid $border;
+    border-radius: $radius-pill;
+    font-size: $fs-xs;
+    font-weight: $fw-medium;
+    color: $brown;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+
+    b { color: $red; font-size: 0.65rem; }
+}
+
+.prestation-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: $red-light;
+    color: $red;
+    border-radius: $radius-pill;
+    font-size: $fs-xs;
+    font-weight: $fw-bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: $space-sm;
+}

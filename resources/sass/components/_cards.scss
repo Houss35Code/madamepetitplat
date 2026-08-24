@@ -1,0 +1,46 @@
+// ============================================================
+//  COMPONENTS / _cards.scss — Mobile First
+// ============================================================
+
+@use '../abstracts/variables' as *;
+
+.prestation-card {
+    background: #fff;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    border: 1px solid $border;
+    box-shadow: $shadow-sm;
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    &:hover {
+        transform: translateY(-7px);
+        box-shadow: $shadow-lg;
+    }
+
+    .prestation-img {
+        height: 140px;
+        background: linear-gradient(135deg, $red-light, $cream);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+    }
+
+    .prestation-body {
+        padding: $space-md;
+
+        h3 {
+            font-family: $font-serif;
+            font-size: $fs-lg;
+            font-weight: $fw-bold;
+            color: $brown;
+            margin-bottom: 0.6rem;
+        }
+
+        p {
+            font-size: $fs-sm;
+            color: $text-light;
+            line-height: $lh-normal;
+        }
+    }
+}

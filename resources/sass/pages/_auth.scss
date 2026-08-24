@@ -1,0 +1,118 @@
+// ============================================================
+//  _auth.scss
+//  Pages d'authentification (login, register, mot de passe…)
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins'    as *;
+@use 'sass:color';
+
+.auth-label {
+    display:     block;
+    font-weight: 500;
+    font-size:   .875rem;
+    color:       $text;
+    margin-bottom: .35rem;
+}
+
+.auth-error {
+    font-size: .875rem;
+    color:     $red;
+
+    li + li { margin-top: .25rem; }
+}
+
+.auth-status {
+    font-weight: 500;
+    font-size:   .875rem;
+    color:       #16a34a;
+}
+
+.auth-checkbox-label {
+    display:     inline-flex;
+    align-items: center;
+    font-size:   .875rem;
+    color:       $text-light;
+
+    input[type="checkbox"] {
+        margin-right: .5rem;
+    }
+}
+
+.auth-forgot-link {
+    font-size:       .875rem;
+    color:           $text-light;
+    text-decoration: underline;
+    transition:      color $transition-fast;
+
+    &:hover { color: $text; }
+}
+
+.auth-btn-primary {
+    display:         inline-flex;
+    align-items:     center;
+    padding:         .5rem 1rem;
+    background:      $brown;
+    border:          1px solid transparent;
+    border-radius:   $radius-sm;
+    font-weight:     600;
+    font-size:       .75rem;
+    color:           #fff;
+    text-transform:  uppercase;
+    letter-spacing:  .05em;
+    cursor:          pointer;
+    transition:      background $transition-fast;
+
+    &:hover,
+    &:focus {
+        background: color.adjust($brown, $lightness: -8%);
+    }
+}
+
+.auth-page {
+    min-height:      100vh;
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    justify-content: center;
+    padding-top:     1.5rem;
+    background:      $cream;
+
+    @include respond-to('sm') {
+        padding-top: 0;
+    }
+}
+
+.auth-logo {
+    width:  5rem;
+    height: 5rem;
+    color:  $text-light;
+
+    path {
+        fill: currentColor;
+    }
+}
+
+.auth-card {
+    width:         100%;
+    max-width:     28rem;
+    margin-top:    1.5rem;
+    padding:       1rem 1.5rem;
+    background:    #fff;
+    box-shadow:    0 1px 3px rgba(0,0,0,.1);
+    overflow:      hidden;
+    border-radius: $radius-lg;
+}
+
+.auth-intro {
+    margin-bottom: 1rem;
+    font-size:     .875rem;
+    color:         $text-light;
+}
+
+.auth-verify-actions {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    margin-top:      1rem;
+}

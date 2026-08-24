@@ -1,0 +1,43 @@
+// ============================================================
+//  COMPONENTS / _buttons.scss — Mobile First
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins'    as *;
+
+.btn {
+    @include btn-base;
+}
+
+.btn-primary {
+    background: $red;
+    color: #fff;
+    box-shadow: $shadow-cta;
+
+    &:hover {
+        background: $red-dark;
+        box-shadow: 0 14px 34px rgba($red, 0.35);
+    }
+}
+
+.btn-outline {
+    background: transparent;
+    color: $brown;
+    border: 2px solid $border;
+
+    &:hover {
+        border-color: $red;
+        color: $red;
+    }
+}
+
+.btn-white {
+    background: #fff;
+    color: $red;
+    font-weight: $fw-bold;
+
+    &:hover {
+        background: $cream;
+        transform: translateY(-2px);
+    }
+}

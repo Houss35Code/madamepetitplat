@@ -1,0 +1,52 @@
+// ============================================================
+//  BASE / _typography.scss — Mobile First
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins'    as *;
+
+.section-label {
+    @include section-label;
+}
+
+.section-title {
+    @include section-title;
+}
+
+.section-intro {
+    font-size: $fs-base;
+    color: $text-light;
+    line-height: $lh-loose;
+    max-width: 580px;
+}
+
+.divider {
+    width: 50px;
+    height: 3px;
+    background: $red;
+    border-radius: 2px;
+    margin: 1.2rem 0;
+}
+
+section {
+    padding: 4rem 5%;
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity $transition-slow, transform $transition-slow;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ── MEDIA QUERIES ───────────────────────────────────────────
+
+@media (min-width: 960px) {
+    section {
+        padding: $section-padding-y $section-padding-x;
+    }
+}

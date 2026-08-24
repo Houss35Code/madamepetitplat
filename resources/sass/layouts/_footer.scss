@@ -1,0 +1,68 @@
+// ============================================================
+//  LAYOUT / _footer.scss
+//  Madame Petit Plat — Pied de page — Mobile First
+// ============================================================
+
+@use '../abstracts/variables' as *;
+
+footer {
+    background: linear-gradient(160deg, #1a0808 0%, #3D1F1F 100%);
+    color: rgba(#fff, 0.85);
+    text-align: center;
+    padding: $space-xl 5% $space-lg;
+}
+
+.footer-logo {
+    font-family: $font-serif;
+    font-size: 1.8rem;
+    font-weight: $fw-bold;
+    color: #fff;
+    margin-bottom: $space-sm;
+
+    em { color: $red; font-style: italic; }
+}
+
+.footer-slogan {
+    font-size: $fs-sm;
+    color: rgba(#fff, 0.55);
+    font-style: italic;
+    margin-bottom: $space-lg;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+    margin-bottom: $space-lg;
+
+    a {
+        font-size: $fs-sm;
+        color: rgba(#fff, 0.65);
+        transition: color $transition-fast;
+
+        &:hover { color: $red; }
+    }
+}
+
+.footer-copy {
+    font-size: $fs-xs;
+    color: rgba(#fff, 0.35);
+    letter-spacing: 0.05em;
+}
+
+// ── MEDIA QUERIES ───────────────────────────────────────────
+
+@media (min-width: 640px) {
+    .footer-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $space-sm $space-md;
+    }
+}
+
+@media (min-width: 960px) {
+    footer { padding: $space-2xl $section-padding-x $space-xl; }
+    .footer-logo { font-size: 2rem; }
+}

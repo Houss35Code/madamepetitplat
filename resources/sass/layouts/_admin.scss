@@ -1,0 +1,843 @@
+// ============================================================
+//  _admin.scss
+//  Layout & composants de l'interface d'administration
+//  Architecture Sass 7-1 · dossier layouts/
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins'    as *;
+@use 'sass:color';
+
+
+// ────────────────────────────────────────────────────────────
+//  VARIABLES LOCALES ADMIN
+// ────────────────────────────────────────────────────────────
+
+$admin-sidebar-w:   240px;
+$admin-topbar-h:    64px;
+$admin-bg:          #f7f3ef;
+$admin-sidebar-bg:  $brown;
+
+
+// ────────────────────────────────────────────────────────────
+//  1. WRAPPER GÉNÉRAL
+// ────────────────────────────────────────────────────────────
+
+.admin-wrapper {
+    display:    flex;
+    min-height: 100vh;
+    background: $admin-bg;
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  2. SIDEBAR
+// ────────────────────────────────────────────────────────────
+
+.admin-sidebar {
+    width:      $admin-sidebar-w;
+    min-height: 100vh;
+    background: $admin-sidebar-bg;
+    display:    flex;
+    flex-direction: column;
+    position:   fixed;
+    top:        0;
+    left:       0;
+    bottom:     0;
+    z-index:    100;
+    overflow-y: auto;
+
+    // ── Marque ──
+    &__brand {
+        padding:     1.8rem 1.5rem 1.2rem;
+        border-bottom: 1px solid rgba(#fff, .08);
+
+        a {
+            display:        block;
+            font-family:    $font-serif;
+            font-size:      1.3rem;
+            font-weight:    600;
+            color:          #fff;
+            text-decoration: none;
+            line-height:    1.1;
+
+            em {
+                font-style: italic;
+                color:      $red-muted;
+            }
+        }
+    }
+
+    &__badge {
+        display:        inline-block;
+        margin-top:     .4rem;
+        font-size:      .65rem;
+        font-weight:    700;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        color:          $red-muted;
+        background:     rgba($red, .15);
+        padding:        .15rem .5rem;
+        border-radius:  $radius-pill;
+    }
+
+    // ── Pied de sidebar ──
+    &__footer {
+        margin-top: auto;
+        padding:    1.2rem 1.5rem;
+        border-top: 1px solid rgba(#fff, .08);
+
+        p {
+            font-size: .72rem;
+            color:     rgba(#fff, .35);
+            margin-bottom: .15rem;
+        }
+
+        strong {
+            font-size:   .88rem;
+            color:       rgba(#fff, .75);
+            font-weight: 500;
+        }
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  3. NAVIGATION SIDEBAR
+// ────────────────────────────────────────────────────────────
+
+.admin-nav {
+    padding: 1rem 0;
+    flex-grow: 1;
+
+    &__groupe {
+        font-size:      .65rem;
+        font-weight:    700;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color:          rgba(#fff, .3);
+        padding:        1.2rem 1.5rem .4rem;
+        margin:         0;
+    }
+
+    &__link {
+        display:         flex;
+        align-items:     center;
+        gap:             .75rem;
+        width:           100%;
+        padding:         .65rem 1.5rem;
+        font-family:     $font-sans;
+        font-size:       .88rem;
+        font-weight:     400;
+        color:           rgba(#fff, .6);
+        text-decoration: none;
+        background:      transparent;
+        border:          none;
+        cursor:          pointer;
+        transition:      background $transition-fast, color $transition-fast;
+        text-align:      left;
+
+        &:hover {
+            background: rgba(#fff, .06);
+            color:      #fff;
+        }
+
+        &--actif {
+            background: rgba($red, .2);
+            color:      #fff;
+            font-weight: 500;
+
+            .admin-nav__icon { color: $red-muted; }
+        }
+
+        &--logout {
+            color: rgba(#fff, .4);
+            &:hover { color: $red-muted; background: rgba($red, .1); }
+        }
+    }
+
+    &__icon {
+        font-size:  .9rem;
+        color:      rgba(#fff, .3);
+        flex-shrink: 0;
+        transition: color $transition-fast;
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  4. ZONE PRINCIPALE
+// ────────────────────────────────────────────────────────────
+
+.admin-main {
+    margin-left: $admin-sidebar-w;
+    flex:        1;
+    display:     flex;
+    flex-direction: column;
+    min-height:  100vh;
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  5. TOPBAR
+// ────────────────────────────────────────────────────────────
+
+.admin-topbar {
+    height:          $admin-topbar-h;
+    background:      #fff;
+    border-bottom:   1px solid $border;
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    padding:         0 2rem;
+    position:        sticky;
+    top:             0;
+    z-index:         50;
+
+    &__titre h1 {
+        font-family:  $font-serif;
+        font-size:    1.3rem;
+        font-weight:  600;
+        color:        $brown;
+        margin:       0;
+    }
+
+    &__actions {
+        display:     flex;
+        align-items: center;
+        gap:         1rem;
+    }
+
+    &__site {
+        font-size:       .78rem;
+        font-weight:     500;
+        color:           $brown;
+        text-decoration: none;
+        padding:         .3rem .85rem;
+        border:          1.5px solid $border;
+        border-radius:   $radius-pill;
+        transition:      border-color $transition-fast, color $transition-fast;
+
+        &:hover {
+            border-color: $red-muted;
+            color:        $red-dark;
+        }
+    }
+
+    &__count {
+        font-size: .8rem;
+        color: $text-light;
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  6. CONTENU
+// ────────────────────────────────────────────────────────────
+
+.admin-content {
+    padding: 2rem;
+    flex:    1;
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  7. ALERTES FLASH
+// ────────────────────────────────────────────────────────────
+
+.admin-alert {
+    margin:        0 2rem;
+    padding:       .85rem 1.2rem;
+    border-radius: $radius-sm;
+    font-size:     .88rem;
+    font-weight:   500;
+    margin-top:    1rem;
+
+    &--success {
+        background: #edf7ed;
+        color:      #2e7d32;
+        border:     1px solid #c3e6cb;
+    }
+
+    &--error {
+        background: $red-light;
+        color:      $red-dark;
+        border:     1px solid $red-muted;
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  8. COMPOSANTS RÉUTILISABLES (tableaux, cartes, boutons)
+// ────────────────────────────────────────────────────────────
+
+// Carte générique
+.admin-card {
+    background:    #fff;
+    border:        1px solid $border;
+    border-radius: $radius-lg;
+    padding:       1.5rem;
+    margin-bottom: 1.5rem;
+
+    &__titre {
+        font-family:   $font-serif;
+        font-size:     1.1rem;
+        font-weight:   600;
+        color:         $brown;
+        margin-bottom: 1rem;
+        padding-bottom: .75rem;
+        border-bottom: 1px solid $border;
+    }
+}
+
+.admin-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+
+    @include respond-to('sm') {
+        grid-template-columns: 1fr;
+    }
+
+    &__full {
+        grid-column: span 2;
+
+        @include respond-to('sm') {
+            grid-column: span 1;
+        }
+    }
+}
+
+.admin-message-text {
+    font-size:   .92rem;
+    color:       $text;
+    line-height: 1.75;
+}
+
+.admin-form-inline {
+    display:     flex;
+    gap:         1rem;
+    align-items: center;
+    flex-wrap:   wrap;
+}
+
+.admin-select {
+    padding:       .5rem 1rem;
+    border:        1.5px solid $border;
+    border-radius: $radius-pill;
+    font-family:   $font-sans;
+    font-size:     .88rem;
+    color:         $text;
+    background:    #fff;
+    cursor:        pointer;
+}
+
+.admin-section-spacer {
+    margin-top: 1rem;
+}
+
+// Tableau admin
+.admin-table {
+    width:           100%;
+    border-collapse: collapse;
+    font-size:       .88rem;
+
+    th {
+        text-align:     left;
+        font-size:      .72rem;
+        font-weight:    700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color:          $text-light;
+        padding:        .6rem 1rem;
+        border-bottom:  2px solid $border;
+        background:     $cream;
+    }
+
+    td {
+        padding:       .85rem 1rem;
+        border-bottom: 1px solid $border;
+        color:         $text;
+        vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tr:hover td { background: $cream; }
+
+    &__muted {
+        color: $text-light;
+    }
+
+    &__footer-action {
+        text-align: right;
+        margin-top: 1rem;
+    }
+
+     &__muted {
+        color: $text-light;
+        font-size: .72rem;
+    }
+
+    &__muted-link {
+        color: $text-light;
+    }
+
+    &__link {
+        color:     $red;
+        font-size: .8rem;
+    }
+
+    &__actions {
+        display: flex;
+        gap: .5rem;
+    }
+
+    &__footer-action {
+        text-align: right;
+        margin-top: 1rem;
+    }
+
+    &__count {
+        font-size: .8rem;
+        color: $text-light;
+    }
+}
+
+// Badge statut
+.admin-badge {
+    display:        inline-block;
+    font-size:      .7rem;
+    font-weight:    700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding:        .2rem .65rem;
+    border-radius:  $radius-pill;
+
+    &--nouveau   { background: #e3f2fd; color: #1565c0; }
+    &--lu { background: $sage-light; color: color.adjust($sage, $lightness: -8%); }
+    &--traite    { background: #e8f5e9; color: #2e7d32; }
+    &--archive   { background: #f5f5f5; color: #757575; }
+    &--visible   { background: #e8f5e9; color: #2e7d32; font-weight: 600; }
+    &--invisible { background: #f5f5f5; color: #757575; }
+}
+
+// Boutons admin
+.admin-btn {
+    display:        inline-flex;
+    align-items:    center;
+    gap:            .4rem;
+    padding:        .45rem 1rem;
+    border-radius:  $radius-pill;
+    font-family:    $font-sans;
+    font-size:      .82rem;
+    font-weight:    500;
+    cursor:         pointer;
+    border:         1.5px solid transparent;
+    text-decoration: none;
+    transition:     $transition-fast;
+
+    &--primary {
+        background:   $red;
+        color:        #fff;
+        border-color: $red;
+        &:hover { background: $red-dark; border-color: $red-dark; }
+    }
+
+    &--outline {
+        background:   transparent;
+        color:        $brown;
+        border-color: $border;
+        &:hover { border-color: $red-muted; color: $red-dark; }
+    }
+
+    &--danger {
+    background:   #b91c1c;
+    color:        #fff;
+    border-color: #b91c1c;
+    &:hover { background: #991b1b; border-color: #991b1b; }
+}
+}
+
+// Stat cards (dashboard)
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+
+    @include respond-to('md') {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.admin-stat {
+    background:    #fff;
+    border:        1px solid $border;
+    border-radius: $radius-lg;
+    padding:       1.4rem 1.5rem;
+    display:       flex;
+    align-items:   center;
+    gap:           1rem;
+
+    &__icon {
+        width:           48px;
+        height:          48px;
+        border-radius:   $radius-md;
+        background:      $red-light;
+        color:           $red;
+        display:         flex;
+        align-items:     center;
+        justify-content: center;
+        font-size:       1.3rem;
+        flex-shrink:     0;
+    }
+
+    &__label {
+        font-size:   .75rem;
+        color:       $text-light;
+        font-weight: 500;
+        margin-bottom: .2rem;
+    }
+
+    &__valeur {
+        font-family:  $font-serif;
+        font-size:    1.8rem;
+        font-weight:  700;
+        color:        $brown;
+        line-height:  1;
+    }
+}
+
+
+// ────────────────────────────────────────────────────────────
+//  9. GALERIE ADMIN
+// ────────────────────────────────────────────────────────────
+
+.galerie-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    @include respond-to('lg') { grid-template-columns: repeat(3, 1fr); }
+    @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+}
+
+.galerie-admin-item {
+    position: relative;
+    border-radius: $radius-md;
+    overflow: hidden;
+    border: 1px solid $border;
+
+    img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        display: block;
+    }
+
+    &:hover .galerie-admin-overlay { opacity: 1; }
+}
+
+.galerie-admin-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba($brown, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity $transition-base;
+}
+
+.galerie-admin-alt {
+    font-size: .72rem;
+    color: $text-light;
+    padding: .4rem .6rem;
+    background: $cream;
+    margin: 0;
+}
+
+// ── PAGE PROFIL ──────────────────────────────────────────────
+
+.admin-profile-section {
+    background:    #fff;
+    border:        1px solid var(--border);
+    border-radius: .75rem;
+    padding:       2rem;
+    margin-bottom: 1.5rem;
+
+    &__header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+
+        h2 {
+            font-size:   1.1rem;
+            font-weight: 600;
+            color:       var(--brown);
+            margin-bottom: .25rem;
+        }
+
+        p {
+            font-size: .875rem;
+            color:     var(--text-light);
+        }
+    }
+
+    &--danger &__header h2 { color: #b91c1c; }
+}
+
+.admin-profile-page {
+    display:        flex;
+    flex-direction: column;
+    gap:            1.5rem;
+    padding:        2rem 0;
+}
+
+.admin-profile-form {
+    display:        flex;
+    flex-direction: column;
+    gap:            1.25rem;
+    max-width:      480px;
+}
+
+.admin-form-error   { font-size: .8rem; color: #b91c1c; margin-top: .25rem; }
+.admin-form-success { font-size: .8rem; color: #15803d; }
+.admin-form-notice  { font-size: .8rem; color: var(--text-light); margin-top: .5rem; }
+
+.admin-link {
+    background:  none;
+    border:      none;
+    padding:     0;
+    color:       var(--red);
+    font-size:   inherit;
+    cursor:      pointer;
+    text-decoration: underline;
+}
+
+.admin-label {
+    display:     block;
+    font-size:   .82rem;
+    font-weight: 600;
+    color:       var(--text-light);
+    margin-bottom: .35rem;
+    letter-spacing: .03em;
+}
+
+.admin-input {
+    width:         100%;
+    padding:       .55rem .85rem;
+    border:        1.5px solid #d1d5db;
+    border-radius: .5rem;
+    font-size:     .9rem;
+    color:         var(--text-dark);
+    background:    #f9f6f2;  // ← fond légèrement crémé
+    transition:    border-color .2s;
+
+    &:focus {
+        outline:      none;
+        border-color: var(--red-muted);
+        background:   #fff;
+    }
+}
+
+// ────────────────────────────────────────────────────────────
+//  10. ÉDITEUR DE MENUS (formulaire create/edit)
+// ────────────────────────────────────────────────────────────
+
+.admin-menu-editor {
+    margin-top: .5rem;
+}
+
+.admin-course-block {
+    border:        1px solid $border;
+    border-radius: $radius-md;
+    padding:       1rem 1.25rem;
+    margin-bottom: 1rem;
+    background:    $cream;
+
+    &__header {
+        display:       flex;
+        align-items:   center;
+        gap:           .75rem;
+        margin-bottom: .75rem;
+    }
+
+    &__label-input {
+        flex:          1;
+        padding:       .4rem .65rem;
+        border:        1px solid $border;
+        border-radius: $radius-sm;
+        font-size:     .85rem;
+        font-family:   $font-sans;
+        background:    #fff;
+        color:         $text;
+
+        &:focus {
+            outline:      none;
+            border-color: $red-muted;
+        }
+    }
+}
+
+.admin-plat-row {
+    display:       flex;
+    gap:           .5rem;
+    margin-bottom: .4rem;
+
+    input {
+        flex:          1;
+        padding:       .35rem .6rem;
+        border:        1px solid $border;
+        border-radius: $radius-sm;
+        font-size:     .85rem;
+        font-family:   $font-sans;
+        background:    #fff;
+        color:         $text;
+
+        &:focus {
+            outline:      none;
+            border-color: $red-muted;
+        }
+    }
+}
+
+.admin-btn-icon {
+    background:    transparent;
+    border:        1px solid $border;
+    border-radius: $radius-sm;
+    cursor:        pointer;
+    padding:       .3rem .55rem;
+    font-size:     .8rem;
+    color:         $text-light;
+    transition:    border-color $transition-fast, color $transition-fast;
+    line-height:   1;
+
+    &:hover {
+        border-color: $red-muted;
+        color:        $red;
+    }
+}
+
+.admin-add-plat {
+    font-size:       .78rem;
+    color:           $text-light;
+    background:      none;
+    border:          none;
+    cursor:          pointer;
+    padding:         0;
+    text-decoration: underline;
+    margin-top:      .25rem;
+    font-family:     $font-sans;
+
+    &:hover { color: $red; }
+}
+
+.admin-form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @include respond-to('sm') {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-form-grid-inline {
+    display:     grid;
+    grid-template-columns: 120px 1fr;
+    gap:         1rem;
+    align-items: center;
+}
+
+.admin-field {
+    margin-bottom: 1.25rem;
+
+    label {
+        display:       block;
+        font-size:     .82rem;
+        font-weight:   600;
+        color:         $text-light;
+        margin-bottom: .35rem;
+        letter-spacing: .03em;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        @extend .admin-input;
+    }
+
+    &__hint {
+        font-size:  .8rem;
+        color:      $text-light;
+        margin-bottom: 1rem;
+    }
+
+    &__error {
+        font-size:  .8rem;
+        color:      $red;
+        margin-top: .25rem;
+    }
+}
+
+.admin-checkbox-label {
+    display:     flex;
+    align-items: center;
+    gap:         .5rem;
+    cursor:      pointer;
+    font-size:   .88rem;
+    color:       $text;
+    padding-top: 1.5rem;
+}
+
+.admin-form-actions {
+    display:    flex;
+    align-items: center;
+    gap:        1rem;
+    margin-top: 2rem;
+}
+
+.admin-form-actions--end {
+    justify-content: flex-end;
+}
+
+.admin-checkbox-row {
+    display:     flex;
+    align-items: center;
+    gap:         .6rem;
+
+    input[type="checkbox"] {
+        width:  16px;
+        height: 16px;
+        cursor: pointer;
+    }
+
+    label {
+        font-size: .88rem;
+        color:     $text;
+        cursor:    pointer;
+    }
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.admin-required {
+    color: $red;
+}
+
+.admin-empty-state {
+    text-align: center;
+    color: $text-light;
+    padding: 2rem;
+    font-size: .9rem;
+}
+
+.admin-form-inline__nested {
+    margin: 0;
+}
+
