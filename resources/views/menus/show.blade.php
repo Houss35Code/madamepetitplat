@@ -16,7 +16,7 @@
         </h1>
         <embed
             class="menu-detail__embed"
-            src="{{ Storage::url($menu->fichier) }}"
+            src="{{ asset('storage/' . $menu->fichier) }}"
             type="application/pdf"
         >
     </div>
