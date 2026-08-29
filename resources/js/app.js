@@ -62,3 +62,11 @@ document.getElementById('hamburger')?.addEventListener('click', function () {
     this.setAttribute('aria-expanded', !expanded);
     document.getElementById('navLinks').classList.toggle('open');
 });
+
+// Scroll automatique vers le formulaire de contact après soumission (succès ou erreur)
+document.addEventListener('DOMContentLoaded', () => {
+    const feedback = document.querySelector('.form-success, .form-errors');
+    if (feedback) {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+});
