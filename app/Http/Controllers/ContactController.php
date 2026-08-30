@@ -49,7 +49,7 @@ class ContactController extends Controller
         ]);
 
         // Envoyer l'email via Mailtrap
-        Mail::to('houssouni35@gmail.com')->send(new DevisMail($client, $devis));
+        Mail::to('iloisell@orange.fr')->send(new DevisMail($client, $devis));
 
         return redirect()->route('home')->with('success', 'Votre demande a bien été envoyée ! Isabel vous répondra sous 48h. ✦');
     }
