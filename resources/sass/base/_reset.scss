@@ -16,6 +16,8 @@ html {
     scroll-behavior: smooth;
     font-size: 100%;
     -webkit-text-size-adjust: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -24,7 +26,10 @@ body {
     background: $warm-white;
     color: $text;
     line-height: $lh-normal;
+    max-width: 100%;
+    width: 100%;
     overflow-x: hidden;
+    position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -32,6 +37,7 @@ body {
 img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
+    height: auto;
 }
 
 input, button, textarea, select { font: inherit; }
