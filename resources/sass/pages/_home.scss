@@ -10,7 +10,8 @@
 #hero {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh;   // fallback
+    min-height: 100dvh;  // valeur réelle
     padding-top: $nav-height;
 }
 
@@ -109,6 +110,7 @@
 }
 
 .apropos-img-wrap {
+    position: relative;
     width: 100%;
     aspect-ratio: 4 / 5;
     border-radius: $radius-xl;
