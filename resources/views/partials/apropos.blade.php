@@ -19,7 +19,7 @@
         </h2>
         <div class="divider" aria-hidden="true"></div>
         <p class="section-intro">
-            Isabel LOISEL est enseignante en lycée professionnel d'hôtellerie et restauration à Rennes.
+            Isabel LOISEL est enseignante en lycée professionnel d'hôtellerie et restauration à Dinard.
             Elle met son expertise culinaire au service de vos événements avec <strong>Madame Petit Plat</strong> :
             une cuisine authentique, généreuse, élaborée avec des produits frais et de saison soigneusement
             sélectionnés en Bretagne.
@@ -29,7 +29,7 @@
             <li class="value-item">
                 
                 <div>
-                    <h3>Produits frais &amp; de saison</h3>
+                    <h3>Produits frais et de saison</h3>
                     <p>Isabel travaille exclusivement avec des producteurs locaux bretons pour des saveurs authentiques et de qualité.</p>
                 </div>
             </li>
@@ -43,7 +43,7 @@
             <li class="value-item">
                 
                 <div>
-                    <h3>Expertise &amp; passion</h3>
+                    <h3>Expertise et passion</h3>
                     <p>Des années d'enseignement et de pratique culinaire au service de votre table, avec rigueur et générosité.</p>
                 </div>
             </li>
