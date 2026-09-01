@@ -107,6 +107,9 @@
     flex-direction: column;
     gap: $space-xl;
     background: $cream;
+    > .fade-up:first-child {
+        position: relative;
+    }
 }
 
 .apropos-img-wrap {
@@ -323,6 +326,9 @@
     background: linear-gradient(160deg, #1a0505 0%, #6b1a1a 100%);
     padding: $space-xl 5%;
     text-align: center;
+    .peda-fiches__grille {
+        margin-top: $space-lg; // Correspond aux 2rem (avec une variable du design system)
+    }
 }
 
 .bandeau-content {

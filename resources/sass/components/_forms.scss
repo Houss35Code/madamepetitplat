@@ -88,6 +88,11 @@
     li { font-size: $fs-sm; }
 }
 
+// Honeypot anti-spam
+.hp-field {
+    display: none;
+}
+
 // ── MEDIA QUERIES ───────────────────────────────────────────
 
 @media (min-width: 640px) {

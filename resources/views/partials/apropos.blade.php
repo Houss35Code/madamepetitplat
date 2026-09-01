@@ -1,12 +1,12 @@
 <section id="apropos" aria-labelledby="apropos-titre">
 
     {{-- COLONNE GAUCHE — visuel --}}
-    <div class="fade-up" style="position:relative">
+    <div class="fade-up">
         <div class="apropos-img-wrap">
-    <img src="{{ asset('images/isabel.png') }}"
-         alt="Isabel LOISEL, cheffe traiteur à Rennes"
-         class="apropos-img">
-</div>
+            <img src="{{ asset('images/isabel.png') }}"
+                 alt="Isabel LOISEL, cheffe traiteur à Rennes"
+                 class="apropos-img">
+        </div>
         <div class="apropos-deco"  aria-hidden="true"></div>
         <div class="apropos-deco2" aria-hidden="true"></div>
     </div>
@@ -27,21 +27,18 @@
 
         <ul class="values-list" aria-label="Nos valeurs">
             <li class="value-item">
-                
                 <div>
                     <h3>Produits frais et de saison</h3>
                     <p>Isabel travaille exclusivement avec des producteurs locaux bretons pour des saveurs authentiques et de qualité.</p>
                 </div>
             </li>
             <li class="value-item">
-                
                 <div>
                     <h3>Menus entièrement personnalisés</h3>
                     <p>Chaque prestation est construite autour de vos envies, votre budget et vos convives.</p>
                 </div>
             </li>
             <li class="value-item">
-                
                 <div>
                     <h3>Expertise et passion</h3>
                     <p>Des années d'enseignement et de pratique culinaire au service de votre table, avec rigueur et générosité.</p>

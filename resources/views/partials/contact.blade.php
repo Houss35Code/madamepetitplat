@@ -51,7 +51,7 @@
             @csrf
 
             {{-- Honeypot anti-spam (CDC §6) --}}
-            <div class="hp-field" aria-hidden="true" style="display:none">
+            <div class="hp-field" aria-hidden="true">
                 <input type="text" name="website" tabindex="-1" autocomplete="off">
             </div>
 
