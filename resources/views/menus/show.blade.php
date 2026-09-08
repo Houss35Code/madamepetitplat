@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $menu->titre }} — Madame Petit Plat</title>
-    @vite(['resources/sass/main.scss'])
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', $menu->titre . ' — Madame Petit Plat')
+@section('description', 'Consultez la carte et le détail du menu ' . $menu->titre . ' de Madame Petit Plat, traiteur à Rennes.')
+
+@section('content')
     <div class="menu-detail">
         <a href="{{ url('/#menus') }}" class="menu-detail__back">
             ← Retour aux menus
@@ -20,5 +17,4 @@
             type="application/pdf"
         >
     </div>
-</body>
-</html>
+@endsection

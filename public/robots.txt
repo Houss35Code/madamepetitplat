@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://trailbreizh.alwaysdata.net/madamepetitplat/sitemap.xml

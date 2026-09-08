@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'Donne-moi des ailes — Activités Pédagogiques · Isabel Loisel')
+@section('description', 'Découvrez les ressources pédagogiques, Padlets et projets de transmission autour des arts de la table partagés par Isabel Loisel.')
+
 @section('content')
 
 {{-- HERO ──────────────────────────────────────────────────── --}}
