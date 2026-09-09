@@ -10,7 +10,7 @@
     @if ($menus->isNotEmpty())
         <div class="menus-grid fade-up">
             @foreach ($menus as $menu)
-                <a href="{{ route('menus.show', $menu) }}" class="menu-card" target="_blank">
+                <a href="{{ route('menus.show', $menu) }}" class="menu-card">
                     <span class="menu-card__occasion">{{ $menu->occasion ?? 'Menu' }}</span>
                     <h3 class="menu-card__titre">{{ $menu->titre }}</h3>
                     @if ($menu->convives)
