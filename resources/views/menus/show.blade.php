@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="menu-detail">
-        <a href="https://trailbreizh.alwaysdata.net/madamepetitplat/#menus" class="menu-detail__back" style="position: relative; z-index: 100; display: inline-block;">
+        <a href="javascript:history.back()" class="menu-detail__back" style="position: relative; z-index: 999; display: inline-block;">
             ← Retour aux menus
         </a>
         <h1 class="menu-detail__title">
