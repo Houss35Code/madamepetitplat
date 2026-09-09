@@ -5,11 +5,15 @@
 
     RewriteEngine On
 
-    # Directives d'autorisation
+    # Gère le cas du sous-dossier sans slash de fin pour éviter la boucle 405 d'Alwaysdata
+    RewriteCond %{REQUEST_URI} ^/madamepetitplat$
+    RewriteRule ^(.*)$ /madamepetitplat/ [L,R=301]
+
+    # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Redirection de toutes les requêtes vers le Front Controller
+    # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
