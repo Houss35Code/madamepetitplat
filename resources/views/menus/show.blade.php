@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="menu-detail">
-        <a href="{{ url('/') }}#menus" class="menu-detail__back">
+        <a href="./#menus" class="menu-detail__back">
             ← Retour aux menus
         </a>
         <h1 class="menu-detail__title">
