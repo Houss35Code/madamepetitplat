@@ -16,6 +16,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/menus/{menu:slug}', [PageController::class, 'menu'])->name('menus.show');
 Route::get('/donne-moi-des-ailes', [PageController::class, 'ailes'])->name('ailes');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+Route::get('/sitemap.xml', [PageController::class, 'sitemap'])->name('sitemap');
 
 // ── PROFIL BREEZE ───────────────────────────────────────────
 
