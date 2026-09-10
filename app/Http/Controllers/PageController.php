@@ -40,36 +40,36 @@ class PageController extends Controller
     }
 
     public function sitemap()
-{
-    $menus = Menu::where('visible', true)->get();
+    {
+        $menus = Menu::where('visible', true)->get();
 
-    $urls = collect();
+        $urls = collect();
 
-    $urls->push([
-        'loc' => route('home'),
-        'lastmod' => now()->toDateString(),
-        'changefreq' => 'weekly',
-        'priority' => '1.0',
-    ]);
-
-    $urls->push([
-        'loc' => route('ailes'),
-        'lastmod' => now()->toDateString(),
-        'changefreq' => 'monthly',
-        'priority' => '0.8',
-    ]);
-
-    foreach ($menus as $menu) {
         $urls->push([
-            'loc' => route('menus.show', $menu),
-            'lastmod' => $menu->updated_at?->toDateString() ?? now()->toDateString(),
-            'changefreq' => 'monthly',
-            'priority' => '0.6',
+            'loc' => route('home'),
+            'lastmod' => now()->toDateString(),
+            'changefreq' => 'weekly',
+            'priority' => '1.0',
         ]);
-    }
 
-    return response()
-        ->view('sitemap', compact('urls'))
-        ->header('Content-Type', 'text/xml');
-}
+        $urls->push([
+            'loc' => route('ailes'),
+            'lastmod' => now()->toDateString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.8',
+        ]);
+
+        foreach ($menus as $menu) {
+            $urls->push([
+                'loc' => route('menus.show', $menu),
+                'lastmod' => $menu->updated_at?->toDateString() ?? now()->toDateString(),
+                'changefreq' => 'monthly',
+                'priority' => '0.6',
+            ]);
+        }
+
+        return response()
+            ->view('sitemap', compact('urls'))
+            ->header('Content-Type', 'text/xml');
+    }
 }

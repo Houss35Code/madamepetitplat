@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="menu-detail">
-        <a href="javascript:history.back()" class="menu-detail__back" style="position: relative; z-index: 999; display: inline-block;">
+        <a href="{{ route('home') }}#menus" class="menu-detail__back">
             ← Retour aux menus
         </a>
         <h1 class="menu-detail__title">
@@ -15,7 +15,6 @@
             class="menu-detail__embed"
             src="{{ asset('storage/' . $menu->fichier) }}"
             type="application/pdf"
-            style="width: 100%; height: 800px; border: none;"
         ></iframe>
     </div>
 @endsection
