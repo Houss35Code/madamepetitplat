@@ -18,10 +18,13 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script_stop: true
           script: |
-            cd ~/www/madamepetitplat
+            cd ~/www
             git pull origin main
+            composer install --no-dev --optimize-autoloader
             php artisan config:cache
+            php artisan route:cache
             php artisan view:cache
+            php artisan migrate --force
