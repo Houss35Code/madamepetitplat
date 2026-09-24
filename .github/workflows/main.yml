@@ -2,13 +2,11 @@ name: Deploy to Alwaysdata
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,8 +16,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          script_stop: true
+          key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/www
             git pull origin main
