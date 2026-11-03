@@ -17,7 +17,11 @@
         
         <div class="menu-detail__actions">
             <a href="{{ asset('storage/' . $menu->fichier) }}" target="_blank" class="btn btn-primary">
-                Consulter / Télécharger le menu (PDF)
+                👁️ Consulter le menu
+            </a>
+            
+            <a href="{{ asset('storage/' . $menu->fichier) }}" download class="btn btn-outline">
+                📥 Télécharger le PDF
             </a>
         </div>
     </div>
