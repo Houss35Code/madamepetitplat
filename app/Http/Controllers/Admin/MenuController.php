@@ -33,7 +33,10 @@ class MenuController extends Controller
             'ordre'    => 'integer|min:0',
         ]);
 
-        $path = $request->file('fichier')->store('menus', 'public');
+        // Nettoyage automatique du nom du fichier PDF (sans accents, sans espaces, sans caractères spéciaux)
+        $file = $request->file('fichier');
+        $filename = Str::slug($request->titre) . '-' . time() . '.' . $file->getClientOriginalExtension();
+        $path = $file->storeAs('menus', $filename, 'public');
 
         Menu::create([
             'slug'     => Str::slug($request->titre . '-' . uniqid()),
@@ -46,7 +49,7 @@ class MenuController extends Controller
         ]);
 
         return redirect()->route('admin.menus.index')
-                         ->with('success', 'Menu créé avec succès.');
+                       ->with('success', 'Menu créé avec succès.');
     }
 
     public function edit(Menu $menu): View
@@ -74,13 +77,17 @@ class MenuController extends Controller
 
         if ($request->hasFile('fichier')) {
             Storage::disk('public')->delete($menu->fichier);
-            $data['fichier'] = $request->file('fichier')->store('menus', 'public');
+            
+            // Nettoyage automatique du nouveau fichier PDF lors de la mise à jour
+            $file = $request->file('fichier');
+            $filename = Str::slug($request->titre) . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $data['fichier'] = $file->storeAs('menus', $filename, 'public');
         }
 
         $menu->update($data);
 
         return redirect()->route('admin.menus.index')
-                         ->with('success', 'Menu mis à jour.');
+                       ->with('success', 'Menu mis à jour.');
     }
 
     public function destroy(Menu $menu): RedirectResponse
@@ -89,6 +96,6 @@ class MenuController extends Controller
         $menu->delete();
 
         return redirect()->route('admin.menus.index')
-                         ->with('success', 'Menu supprimé.');
+                       ->with('success', 'Menu supprimé.');
     }
 }
