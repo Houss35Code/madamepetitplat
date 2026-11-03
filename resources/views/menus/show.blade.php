@@ -16,12 +16,14 @@
         </h1>
         
         <div class="menu-detail__actions">
-            <a href="{{ asset('storage/' . $menu->fichier) }}" target="_blank" class="btn btn-primary">
-                👁️ Consulter le menu
+            {{-- S'ouvre dans le même onglet sur PC pour une navigation fluide --}}
+            <a href="{{ asset('storage/' . $menu->fichier) }}" class="btn btn-primary">
+                Consulter le menu
             </a>
             
+            {{-- Téléchargement direct --}}
             <a href="{{ asset('storage/' . $menu->fichier) }}" download class="btn btn-outline">
-                📥 Télécharger le PDF
+                Télécharger le PDF
             </a>
         </div>
     </div>
