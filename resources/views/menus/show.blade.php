@@ -25,20 +25,16 @@
             </a>
         </div>
 
+        {{-- L'iframe est affichée UNIQUEMENT sur desktop pour ne jamais perturber les mobiles stricts --}}
+        @desktop
         <div class="menu-detail__pdf-container">
             <iframe 
                 src="{{ asset('storage/' . $menu->fichier) }}" 
                 width="100%" 
                 height="700px" 
                 class="menu-detail__iframe"
-            >
-                <div class="menu-detail__fallback">
-                    <p>Votre navigateur ne peut pas afficher directement ce PDF.</p>
-                    <a href="{{ asset('storage/' . $menu->fichier) }}" target="_blank">
-                        Cliquez ici pour l'ouvrir
-                    </a>
-                </div>
-            </iframe>
+            ></iframe>
         </div>
+        @enddesktop
     </div>
 @endsection
