@@ -52,10 +52,12 @@
     height: calc(100vh - #{$nav-height});
     background: $warm-white;
     padding: $space-lg $space-md;
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+    border-left: 1px solid $border; // Remplacement de l'ombre par une bordure neutre
+    box-shadow: none;             // Suppression de l'ombre pour les filtres stricts
     transform: translateX(100%);
     transition: transform $transition-slow;
     overflow-y: auto;
+    z-index: 1000;
 
     a {
         font-family: $font-sans;
@@ -76,7 +78,7 @@
     font-style: italic;
 }
 
-// Adimin
+// Admin
 .nav-admin {
     font-size:       .78rem;
     font-weight:     500;
@@ -160,6 +162,7 @@
         height: auto;
         background: transparent;
         padding: 0;
+        border-left: none;
         box-shadow: none;
         transform: none;
         overflow-y: visible;
@@ -195,8 +198,8 @@
     .hamburger { display: none; }
 
     #navbar.navbar--dark:not(.scrolled) {
-    .nav-logo { color: #fff; span { color: $red-muted; } }
-    .nav-links a { color: rgba(#fff, .75); }
-    .hamburger span { background: #fff; }
-}
+        .nav-logo { color: #fff; span { color: $red-muted; } }
+        .nav-links a { color: rgba(#fff, .75); }
+        .hamburger span { background: #fff; }
+    }
 }
