@@ -15,18 +15,18 @@
             {{ $menu->titre }}
         </h1>
         
-        {{-- Boutons d'actions ultra-compatibles mobiles (DuckDuckGo, etc.) --}}
-        <div class="flex flex-wrap gap-4 mb-8">
-            <a href="{{ asset('storage/' . $menu->fichier) }}" target="_blank" class="px-6 py-3 bg-amber-900 text-white font-medium rounded-lg shadow hover:bg-amber-800 transition inline-flex items-center gap-2">
-                👁️ Consulter le menu
+        {{-- Boutons d'actions propres et visibles immédiatement --}}
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+            <a href="{{ asset('storage/' . $menu->fichier) }}" target="_blank" class="px-6 py-4 bg-amber-900 text-white font-medium rounded-lg shadow hover:bg-amber-800 transition text-center flex items-center justify-center gap-2">
+                👁️ Consulter le menu (Plein écran)
             </a>
             
-            <a href="{{ asset('storage/' . $menu->fichier) }}" download class="px-6 py-3 bg-white text-amber-900 border border-amber-900 font-medium rounded-lg shadow-sm hover:bg-amber-50 transition inline-flex items-center gap-2">
+            <a href="{{ asset('storage/' . $menu->fichier) }}" download class="px-6 py-4 bg-white text-amber-900 border-2 border-amber-900 font-medium rounded-lg shadow-sm hover:bg-amber-50 transition text-center flex items-center justify-center gap-2">
                 📥 Télécharger le PDF
             </a>
         </div>
 
-        {{-- Visualiseur (affiché principalement sur Desktop, les mobiles stricts basculeront sur les boutons ci-dessus) --}}
+        {{-- L'iframe est affichée UNIQUEMENT sur grand écran (Desktop). Sur mobile, elle disparaît totalement pour éviter tout bug de calque. --}}
         <div class="menu-pdf-wrapper bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hidden md:block">
             <iframe 
                 src="{{ asset('storage/' . $menu->fichier) }}" 
