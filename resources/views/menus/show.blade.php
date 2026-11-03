@@ -15,27 +15,12 @@
             {{ $menu->titre }}
         </h1>
         
-        {{-- Boutons d'actions principaux --}}
-        <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <a href="{{ asset('storage/' . $menu->fichier) }}" target="_blank" class="px-6 py-4 bg-amber-900 text-white font-medium rounded-lg shadow hover:bg-amber-800 transition text-center flex items-center justify-center gap-2">
-                👁️ Consulter le menu (Plein écran)
-            </a>
-            
-            <a href="{{ asset('storage/' . $menu->fichier) }}" download class="px-6 py-4 bg-white text-amber-900 border-2 border-amber-900 font-medium rounded-lg shadow-sm hover:bg-amber-50 transition text-center flex items-center justify-center gap-2">
-                📥 Télécharger le PDF
+        {{-- Le bloc simple avec le bouton de téléchargement / ouverture direct --}}
+        <div class="p-8 bg-amber-50/50 rounded-xl text-center border border-amber-200 shadow-sm">
+            <p class="text-gray-700 mb-6 font-medium">Votre navigateur ne peut pas afficher directement ce PDF.</p>
+            <a href="{{ asset('storage/' . $menu->fichier) }}" target="_blank" class="inline-block px-8 py-4 bg-[#8b1e24] text-white font-medium rounded-lg shadow hover:bg-[#72181d] transition">
+                Télécharger / Ouvrir le PDF
             </a>
         </div>
-
-        {{-- L'iframe est rendue UNIQUEMENT sur les écrans de type ordinateur (Desktop) pour ne jamais polluer le DOM mobile --}}
-        @desktop
-        <div class="menu-pdf-wrapper bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-            <iframe 
-                src="{{ asset('storage/' . $menu->fichier) }}" 
-                width="100%" 
-                height="700px" 
-                class="w-full border-0"
-            ></iframe>
-        </div>
-        @enddesktop
     </div>
 @endsection
