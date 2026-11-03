@@ -1,7 +1,17 @@
+// ============================================================
+//  PAGES / _menu-detail.scss
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins'    as *;
+
 .menu-detail {
     max-width: 900px;
     margin: 2rem auto;
     padding: 0 1rem;
+    
+    // Décale tout le contenu vers le bas pour qu'il commence sous la navbar fixe
+    padding-top: calc(#{$nav-height} + 1.5rem);
 
     &__back {
         display: inline-block;
