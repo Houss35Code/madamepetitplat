@@ -17,24 +17,8 @@
         
         <div class="menu-detail__actions">
             <a href="{{ asset('storage/' . $menu->fichier) }}" target="_blank" class="btn btn-primary">
-                👁️ Ouvrir en grand
-            </a>
-            
-            <a href="{{ asset('storage/' . $menu->fichier) }}" download class="btn btn-outline">
-                📥 Télécharger le PDF
+                Consulter / Télécharger le menu (PDF)
             </a>
         </div>
-
-        {{-- L'iframe est affichée UNIQUEMENT sur desktop pour ne jamais perturber les mobiles stricts --}}
-        @desktop
-        <div class="menu-detail__pdf-container">
-            <iframe 
-                src="{{ asset('storage/' . $menu->fichier) }}" 
-                width="100%" 
-                height="700px" 
-                class="menu-detail__iframe"
-            ></iframe>
-        </div>
-        @enddesktop
     </div>
 @endsection
