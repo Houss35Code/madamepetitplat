@@ -57,10 +57,32 @@ window.addEventListener('scroll', () => {
 });
 
 // Hamburger mobile
-document.getElementById('hamburger')?.addEventListener('click', function () {
-    const expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !expanded);
-    document.getElementById('navLinks').classList.toggle('open');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+if (hamburger && navLinks) {
+    // 1. Ouverture / Fermeture au clic sur le bouton burger
+    hamburger.addEventListener('click', function () {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        navLinks.classList.toggle('open');
+    });
+
+    // 2. Fermer automatiquement le menu lorsqu'on clique sur un lien de navigation
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('open');
+        });
+    });
+}
+
+// 3. Réinitialiser le menu si la page est restaurée depuis le cache du navigateur (bfcache)
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted && hamburger && navLinks) {
+        hamburger.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('open');
+    }
 });
 
 // Scroll automatique vers le formulaire de contact après soumission (succès ou erreur)
