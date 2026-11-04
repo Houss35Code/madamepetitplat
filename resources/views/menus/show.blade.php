@@ -6,7 +6,7 @@
 @section('content')
     <div class="menu-detail">
         <div class="menu-detail__navigation">
-            <a href="javascript:history.back()" class="menu-detail__back-link">
+            <a href="{{ route('home') }}#menus" class="menu-detail__back-link">
                 ← Retour aux menus
             </a>
         </div>
